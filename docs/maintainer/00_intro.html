@@ -3,12 +3,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Maintainer Documentation &#8212; conda-forge 2022.06.03 documentation</title>
+    <title>Maintainer Documentation &#8212; conda-forge 2022.07.25 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -16,6 +16,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
 
     
@@ -55,7 +56,7 @@
         <li class="right" >
           <a href="../user/talks.html" title="Talks and resources about conda-forge"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">conda-forge 2022.06.03 documentation</a> &#187;</li>
+    <li><a href="../index.html">conda-forge 2022.07.25 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">Maintainer Documentation</a></li> 
       </ul>
@@ -69,7 +70,7 @@
           <div class="body" role="main">
             
   <section id="maintainer-documentation">
-<h1>Maintainer Documentation<a class="headerlink" href="#maintainer-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Maintainer Documentation<a class="headerlink" href="#maintainer-documentation" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a><ul>
@@ -138,6 +139,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#feedback-and-revision">Feedback and revision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#post-staging-process">Post staging process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#feedstock-repository-structure">Feedstock repository structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#recipe">recipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#license-txt">LICENSE.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#ci-files">CI-files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#conda-forge-yml">conda-forge.yml</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#maintainer-role">Maintainer role</a></li>
 <li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#adding-multiple-packages-at-once">Adding multiple packages at once</a></li>
 <li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#synchronizing-fork-for-future-use">Synchronizing fork for future use</a></li>
@@ -191,6 +199,11 @@
 <li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#licenses-of-included-dependencies">Licenses of included dependencies</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="adding_pkgs.html#extra">Extra</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#recipe-maintainer">Recipe Maintainer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adding_pkgs.html#feedstock-name">Feedstock name</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="adding_pkgs.html#miscellaneous">Miscellaneous</a><ul>
@@ -204,7 +217,10 @@
 <li class="toctree-l2"><a class="reference internal" href="updating_pkgs.html#important-notes">Important notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="updating_pkgs.html#packages-on-conda-forge-are-immutable">Packages on <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> are immutable</a></li>
 <li class="toctree-l3"><a class="reference internal" href="updating_pkgs.html#forking-and-pull-requests">Forking and pull requests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="updating_pkgs.html#pushing-to-regro-cf-autotick-bot-branch">Pushing to regro-cf-autotick-bot branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="updating_pkgs.html#pushing-to-regro-cf-autotick-bot-branch">Pushing to regro-cf-autotick-bot branch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="updating_pkgs.html#how-does-regro-cf-autotick-bot-create-automatic-version-updates"><strong>How does regro-cf-autotick-bot create automatic version updates?</strong></a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="updating_pkgs.html#example-workflow-for-updating-a-package">Example workflow for updating a package</a></li>
 </ul>
 </li>
@@ -403,7 +419,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -439,7 +455,7 @@
         <li class="right" >
           <a href="../user/talks.html" title="Talks and resources about conda-forge"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">conda-forge 2022.06.03 documentation</a> &#187;</li>
+    <li><a href="../index.html">conda-forge 2022.07.25 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">Maintainer Documentation</a></li> 
       </ul>
@@ -448,7 +464,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016-2022, conda-forge.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>

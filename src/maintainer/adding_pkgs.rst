@@ -3,12 +3,7 @@
 Contributing packages
 *********************
 
-
-To submit a package to the ``conda-forge`` channel, add its ``recipe`` and licence to the ``staged-recipes`` repository and create a pull request. Once the pull request is merged, the package becomes available
-on the ``conda-forge`` channel. Note that contributing a package makes you the ``maintainer`` of that package.
-
-A maintainer is responsible for maintaining the feedstock repository and packages as well as their future versions and has push access to the feedstock repositories of only the packages it maintains. 
-You can learn more about the roles of a maintainer `here. <https://conda-forge.org/docs/maintainer/adding_pkgs.html#maintainer-role>`__
+To submit a package to the ``conda-forge`` channel, add its ``recipe`` and licence to the ``staged-recipes`` repository and create a pull request. Once the pull request is merged, the package becomes available on the ``conda-forge`` channel.
 
 The sections below provide detailed instructions on contributing packages to conda-forge.
 
@@ -29,13 +24,28 @@ Generating the recipe
 
 There are, currently, three ways to generate a recipe:
 
-#. If it is an R package from `CRAN <https://cran.r-project.org/>`_, kindly
+1. If it is an R package from `CRAN <https://cran.r-project.org/>`_, kindly
    start by using the `conda-forge helper script for R recipes <https://github.com/bgruening/conda_r_skeleton_helper>`_ instead.
    Then if necessary, you can make manual edits to the recipe.
-#. If it is a python package, you can generate the recipe as a starting point with ``grayskull``.
-   Use ``conda install -c conda-forge grayskull`` to install ``grayskull``, followed by ``grayskull pypi your_package_name`` to generate the recipe. Note that you do *not* necessarily have to use ``grayskull``, and the
-   recipes produced by ``grayskull`` might need to be reviewed and edited. Read more about ``grayskull`` and how to use it `here <https://github.com/conda-incubator/grayskull#introduction>`__.
-#. If it's none of the above, generate a recipe with the help of `the example recipe <https://github.com/conda-forge/staged-recipes/tree/master/recipes/example>`_ in the `staged-recipes repository <https://github.com/conda-forge/staged-recipes>`_ and modify it as necessary.
+
+2. If it is a python package, you can generate the recipe as a starting point with ``grayskull``.
+
+  .. note::
+
+    `Grayskull <https://github.com/conda-incubator/grayskull>`_ is an automatic conda recipe generator. The goal of this project is to generate concise recipes
+    for conda-forge and eventually replace conda skeleton. Presently, Grayskull can generate recipes for Python packages available on PyPI and also those not published on PyPI and only available as GitHub repositories.
+
+    Installation and usage of ``grayskull``:
+
+    - Create a new environment using : ``conda create --name MY_ENV``. Replace ``MY_ENV`` with the environment name.
+    - Activate this new environment : ``conda activate MY_ENV``.
+    - Run ``conda install -c conda-forge grayskull`` to install ``grayskull``.
+    - Followed by ``grayskull pypi --strict-conda-forge YOUR_PACKAGE_NAME`` to generate the recipe. Replace ``YOUR_PACKAGE_NAME`` with the package name.
+
+  You do *not* necessarily have to use ``grayskull``, and the recipes produced by ``grayskull`` might need to be reviewed and edited.
+  Read more about ``grayskull`` and how to use it `here <https://github.com/conda-incubator/grayskull#introduction>`__.
+
+3. If it's none of the above, generate a recipe with the help of `the example recipe <https://github.com/conda-forge/staged-recipes/tree/master/recipes/example>`_ in the `staged-recipes repository <https://github.com/conda-forge/staged-recipes>`_ and modify it as necessary.
 
 Your final recipe should have no comments (unless they're actually relevant to the recipe, and not generic instruction comments), and follow the order in the example.
 
@@ -115,13 +125,43 @@ Post staging process
 * If you want to make a change to the recipe, send a :term:`PR` to the git repository from a fork. Branches of the main repository are used for maintaining different versions only.
 
 
+.. _feedstock-repository-structure:
+
+Feedstock repository structure
+------------------------------
+
+Once the PR containing the recipe for a package is merged in the ``staged-recipes`` repository, a new repository is created automatically called ``<package-name>-feedstock``.
+A feedstock is made up of a conda recipe (the instructions on what and how to build the package) and the necessary configuration files for automatic builds using freely available continuous integration (CI) services.
+
+Each feedstock contains various files that are generated automatically using our automated provisioning tool `conda-smithy <https://github.com/conda-forge/conda-smithy/>`__. Broadly every feedstock has the following files:
+
+recipe
+......
+
+This folder contains the ``meta.yaml`` file and any other files/scripts needed to build the package.
+
+LICENSE.txt
+............
+
+This file is the license for the recipe itself. This license is different from the package license, which you define while submitting the package recipe using ``license_file`` in the ``meta.yaml`` file.
+
+CI-files
+........
+
+These are the CI configuration files for service providers like Azure and TravisCI.
+
+conda-forge.yml
+................
+
+This file is used to configure how the feedstock is set up and built. Making any changes in this file usually requires `rerendering the feedstock <https://conda-forge.org/docs/maintainer/updating_pkgs.html#dev-update-rerender>`__.
+
 Maintainer role
 ---------------
 
 The maintainer's job is to:
 
 - Keep the feedstock updated by merging eventual maintenance :term:`PR`\ s from conda-forge's bots.
-- Keep the feedstock on par with new releases of the source package by
+- Keep the feedstock on par with new releases of the source package by:
 
   - Bumping the version number and checksum.
   - Making sure that the feedstock's requirements stay accurate.
@@ -760,6 +800,38 @@ For some languages, the community provides tools which can automate this process
 .. note::
 
    The correct and automated packaging of dependency licenses is an ongoing discussion. Please feel free to add your thoughs to `this <https://github.com/conda-forge/conda-forge.github.io/issues/1052>`__ discussion. 
+
+Extra
+-----
+
+.. _recipe_maintainer:
+
+Recipe Maintainer
+..................
+
+A maintainer is an individual who is responsible for maintaining and updating one or more feedstock repositories and packages as well as their future versions. They have push access to the feedstock repositories of only the packages they maintain and can merge pull requests into it.
+
+Contributing a recipe for package makes you the ``maintainer`` of that package automatically.
+See `Maintainers Role <https://conda-forge.org/docs/maintainer/adding_pkgs.html#maintainer-role>`__ and `Maintaining Packages <https://conda-forge.org/docs/maintainer/updating_pkgs.html#maintaining-packages>`__ to learn more about what are the things that maintainers do.
+If you wish to be a maintainer of a certain package, you should contact current maintainers and open an issue in that package's feedstock with the following command:
+
+``@conda-forge-admin, please add user @username``
+
+where username is the GitHub username of the new maintainer to be added. Please refer to `Becoming a maintainer <https://conda-forge.org/docs/orga/guidelines.html#becoming-a-maintainer>`__ and `Updating the maintainer <https://conda-forge.org/docs/maintainer/updating_pkgs.html#updating-the-maintainer-list>`__ for detailed instructions.
+
+.. _feedstock_name:
+
+Feedstock name
+..............
+
+If you want the name of the feedstock to be different from the package name in the staged-recipes, you can use the ``feedstock-name`` directive in the recipe of that package, like this:
+
+.. code-block:: yaml
+
+  extra:
+    feedstock-name: <name>
+
+Here, ``<name>`` is the name you would want for the feedstock.
 
 Miscellaneous
 =============
