@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Infrastructure &#8212; conda-forge 2022.07.25 documentation</title>
+    <title>Infrastructure &#8212; conda-forge 2022.08.03 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -56,7 +56,7 @@
         <li class="right" >
           <a href="00_intro.html" title="Maintainer Documentation"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">conda-forge 2022.07.25 documentation</a> &#187;</li>
+    <li><a href="../index.html">conda-forge 2022.08.03 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="00_intro.html" accesskey="U">Maintainer Documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Infrastructure</a></li> 
@@ -184,6 +184,11 @@ bot. This functionality is currently experimental. You can find more details
 <a class="reference internal" href="#automerge"><span class="std std-ref">here</span></a>.
 Please open issue on <code class="docutils literal notranslate"><span class="pre">regro/cf-scripts</span></code> for any feedback, bugs, and/or questions!</p>
 </section>
+<section id="conda-forge-admin-please-remove-bot-automerge">
+<h3>&#64;conda-forge-admin, please remove bot automerge<a class="headerlink" href="#conda-forge-admin-please-remove-bot-automerge" title="Permalink to this heading">¶</a></h3>
+<p>Entering this command in the title or comment of an issue will instruct the admin bot to
+open a PR to disable automerge, undoing the <code class="docutils literal notranslate"><span class="pre">please</span> <span class="pre">add</span> <span class="pre">bot</span> <span class="pre">automerge</span></code> command.</p>
+</section>
 <section id="conda-forge-admin-please-add-python-2-7">
 <h3>&#64;conda-forge-admin, please add python 2.7<a class="headerlink" href="#conda-forge-admin-please-add-python-2-7" title="Permalink to this heading">¶</a></h3>
 <p>Entering this command in the title of an issue will instruct the admin bot to
@@ -287,7 +292,8 @@ Linux packages. It can optionally build OSX packages.</p>
 <section id="drone-io">
 <h3>Drone.io<a class="headerlink" href="#drone-io" title="Permalink to this heading">¶</a></h3>
 <p>We use <a class="reference external" href="https://drone.io">Drone.io</a> for Linux ARMv8 builds. To enable these builds on your feedstock, make a pull request to add your feedstock to the list
-here <a class="reference external" href="https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/master/recipe/migrations/arch_rebuild.txt">https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/master/recipe/migrations/arch_rebuild.txt</a>.</p>
+in the <a class="reference external" href="https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/master/recipe/migrations/arch_rebuild.txt">arch_rebuild.txt file</a>.
+Read <a class="reference internal" href="knowledge_base.html#using-arch-rebuild"><span class="std std-ref">Using arch_rebuild.txt</span></a> to learn more.</p>
 </section>
 <section id="github-actions">
 <h3>GitHub Actions<a class="headerlink" href="#github-actions" title="Permalink to this heading">¶</a></h3>
@@ -440,6 +446,7 @@ will be able to upload packages with the same name.</p>
 <li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-ping-conda-forge-team">&#64;conda-forge-admin, please ping conda-forge/&lt;team&gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-rerun-bot">&#64;conda-forge-admin, please rerun bot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-add-bot-automerge">&#64;conda-forge-admin, please add bot automerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-remove-bot-automerge">&#64;conda-forge-admin, please remove bot automerge</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-add-python-2-7">&#64;conda-forge-admin, please add python 2.7</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conda-forge-admin-please-add-user-username">&#64;conda-forge-admin, please add user &#64;username</a></li>
 </ul>
@@ -552,7 +559,7 @@ will be able to upload packages with the same name.</p>
         <li class="right" >
           <a href="00_intro.html" title="Maintainer Documentation"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">conda-forge 2022.07.25 documentation</a> &#187;</li>
+    <li><a href="../index.html">conda-forge 2022.08.03 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="00_intro.html" >Maintainer Documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Infrastructure</a></li> 
@@ -562,7 +569,7 @@ will be able to upload packages with the same name.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016-2022, conda-forge.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>
